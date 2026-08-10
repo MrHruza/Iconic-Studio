@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ČLENOVÉ :: Iconic Studio</title>
+    <meta name="description" content="Seznam členů Iconic Studia - zakladatelé, dabéři, herci, stavitelé a všichni, kdo se podílejí na tvorbě Minecraft filmů.">
+    
+    <link rel="icon" href="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary-color: #f57f17;
+            --primary-hover: #ff9800;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- PRELOADER --- */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader-logo {
+            width: 120px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loader-spinner {
+            margin-top: 20px;
+            width: 40px; height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- HLAVIČKA --- */
+        header {
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 45px;
+            border-radius: 6px;
+        }
+
+        .logo-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .slogan {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle-divider {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+
+        /* --- ZAKLADATELÉ (2 SLAVKY / CARDS) --- */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .founder-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(245, 127, 23, 0.15);
+        }
+
+        .founder-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .founder-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .founder-real-name {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .founder-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .badge-founder {
+            display: inline-block;
+            background: rgba(245, 127, 23, 0.15);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        /* --- MĚKKÝ TÝM A POMOCNÍCI (GRID GRID-4) --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .team-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* --- SPONZOR --- */
+        .sponsor-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .sponsor-box img {
+            max-width: 260px;
+            margin: 20px 0;
+        }
+
+        .sponsor-box a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* --- VYSOUVACÍ POPUP PANEL ZPRAVA --- */
+        .slide-in-popup {
+            position: fixed;
+            bottom: 30px;
+            right: -450px;
+            width: 400px;
+            background: #12141c;
+            border: 2px solid var(--primary-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            transition: right 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .slide-in-popup.show {
+            right: 30px;
+        }
+
+        .popup-content {
+            flex: 1;
+        }
+
+        .popup-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .popup-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .popup-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .popup-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .popup-avatar {
+            width: 100px;
+            height: auto;
+            margin-left: 10px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            color: #fff;
+        }
+
+        /* PATIČKA */
+        footer {
+            background: #07080a;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            padding: 25px;
+            margin-top: auto;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p.sub-text {
+            margin-top: 5px;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            .founders-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .slide-in-popup { width: calc(100% - 40px); right: -100%; }
+            .slide-in-popup.show { right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Iconic Studio Logo" class="loader-logo">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Iconic Studio Logo">
+                <div class="logo-text">
+                    <h1>Iconic Studio</h1>
+                    <div class="slogan">„Vraťme Československou Minecraft Kinematografii“</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">ÚVOD</a></li>
+                    <li><a href="/projekty/">PROJEKTY</a></li>
+                    <li><a href="/historie/">HISTORIE</a></li>
+                    <li><a href="/clenove/" class="active">ČLENOVÉ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Členové</h1>
+        <div class="page-subtitle-divider">________</div>
+
+        <h2 class="section-subtitle">Zakladatelé Studio</h2>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Rades" class="founder-icon">
+                <span class="badge-founder">Zakladatel Iconic Studia</span>
+                <h3>Rades</h3>
+                <div class="founder-real-name">Radek Charvát</div>
+                <p>Svoje projekty šíří od roku 2022, ale Minecraft kinematografii sledoval už od samotných začátků. Věnuje se veškeré postprodukci jako je střih, kamera, scénář apod.</p>
+            </div>
+
+            <div class="founder-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Gufuu" class="founder-icon">
+                <span class="badge-founder">Zakladatel Iconic Studia</span>
+                <h3>Gufuu</h3>
+                <div class="founder-real-name">Petr Melichar</div>
+                <p>Svoje projekty šíří od roku 2020, ale Minecraft kinematografii sledoval už od samotných začátků. Pomáhá se vším co může jako je stavba mapy, scénář apod.</p>
+            </div>
+        </div>
+
+        <h2 class="section-subtitle">Tým a Tvorba</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Fuze" class="team-icon">
+                <h3>Fuze</h3>
+                <div class="team-role">Pomocník</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Librex" class="team-icon">
+                <h3>Librex</h3>
+                <div class="team-role">Dabér / Herec</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Klo" class="team-icon">
+                <h3>Klo</h3>
+                <div class="team-role">Skiny / Dabérka</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Foxy" class="team-icon">
+                <h3>Foxy</h3>
+                <div class="team-role">Modely / Resource packy</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Louis" class="team-icon">
+                <h3>Louis</h3>
+                <div class="team-role">Dabér</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Fist" class="team-icon">
+                <h3>Fist</h3>
+                <div class="team-role">Dabér / Herec / TikTok</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Happynick" class="team-icon">
+                <h3>Happynick</h3>
+                <div class="team-role">Builder</div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://duyn491kcolsw.cloudfront.net/files/01/017/017snb.svg?ph=a121710cf8" alt="Tashyo" class="team-icon">
+                <h3>Tashyo</h3>
+                <div class="team-role">Dabér / Technik</div>
+            </div>
+        </div>
+
+        <section class="sponsor-box">
+            <p>Spolehlivé zázemí nám zajišťuje Atropol Hosting, kterému ze srdce děkujeme!</p>
+            <a href="https://atropol.eu/" target="_blank">
+                <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000014-cbee6cbee8/atropol-full.png" alt="Atropol Hosting">
+            </a>
+            <p>Pokud i vy hledáte spolehlivý hosting s rychlou podporou.</p>
+            <p><a href="https://atropol.eu/" target="_blank">SERVERY ZDE!</a></p>
+        </section>
+    </main>
+
+    <div class="slide-in-popup" id="joinPopup">
+        <button class="close-popup" onclick="closePopup()">&times;</button>
+        <div class="popup-content">
+            <h3>Neváhej a přidej se k nám!</h3>
+            <p>Chceš se podílet na tvorbě filmů v Minecraftu?</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4WXYLKWQs838g1OyKlvislzrbewNgEm4DaRtRlMHCcvXQdg/viewform?usp=sharing&ouid=113638833002740759943" target="_blank" class="popup-btn">CHCI SE PRIDAŤ</a>
+        </div>
+        <img src="https://github.com/user-attachments/assets/31b529ef-6d0e-4572-b775-18cac382455c" alt="Náborový obrázek" class="popup-avatar" id="popupAvatar">
+    </div>
+
+    <footer>
+        <p>~ Iconic Studio 2022 ~</p>
+        <p class="sub-text">Všechno najdeš v Minecraftu</p>
+    </footer>
+
+    <script>
+        // NAČÍTAČKA
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+
+            // Vysunutí popup okna po 3 sekundách
+            setTimeout(() => {
+                document.getElementById('joinPopup').classList.add('show');
+            }, 3000);
+        });
+
+        function closePopup() {
+            document.getElementById('joinPopup').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
