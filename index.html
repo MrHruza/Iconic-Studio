@@ -139,19 +139,36 @@
             color: #fff;
         }
 
-        /* --- CLEAN HERO BANNER (BEZ TEXTU PŘES OBRÁZEK) --- */
+        /* --- HERO BANNER (ZVĚTŠENÉ LOGO) --- */
         .hero {
             width: 100%;
-            height: 50vh;
-            min-height: 350px;
-            background: url('https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png') center/contain no-repeat;
+            height: 65vh;
+            min-height: 450px;
+            /* Zde si pak můžeš změnit obrázek na pozadí */
+            background: linear-gradient(rgba(11,12,16,0.4), rgba(11,12,16,0.8)), url('TVUJ_OBRAZEK_POZADI.jpg') center/cover no-repeat;
             background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-bottom: 1px solid var(--card-border);
+        }
+
+        .hero-logo {
+            max-width: 80%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8));
+            transition: transform 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.03);
         }
 
         /* --- MAIN CONTENT --- */
         main {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 50px 20px;
             width: 100%;
@@ -204,24 +221,27 @@
             margin-bottom: 15px;
         }
 
-        /* --- SLIDER PRO MINI FILMY --- */
+        /* --- AUTOMATICKÝ SLIDER PRO MINI FILMY --- */
         .slider-section {
             margin: 60px 0;
+            overflow: hidden;
+            position: relative;
         }
 
-        .slider-container {
+        .slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider-track {
             display: flex;
             gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) var(--bg-color);
+            transition: transform 0.5s ease-in-out;
         }
 
         .slider-card {
-            flex: 0 0 300px;
-            scroll-snap-align: start;
+            flex: 0 0 calc(33.333% - 14px); /* Zobrazuje 3 karty vedle sebe */
+            min-width: 280px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -358,6 +378,83 @@
             color: var(--primary-color);
         }
 
+        /* --- VYSOUVACÍ POPUP PANEL ZPRAVA --- */
+        .slide-in-popup {
+            position: fixed;
+            bottom: 30px;
+            right: -450px; /* Schované mimo obrazovku */
+            width: 400px;
+            background: #12141c;
+            border: 2px solid var(--primary-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            transition: right 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .slide-in-popup.show {
+            right: 30px; /* Vysune se na obrazovku */
+        }
+
+        .popup-content {
+            flex: 1;
+        }
+
+        .popup-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .popup-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .popup-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .popup-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .popup-avatar {
+            width: 90px;
+            height: auto;
+            margin-left: 10px;
+            object-fit: contain;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            color: #fff;
+        }
+
         /* PATIČKA */
         footer {
             background: #07080a;
@@ -369,9 +466,16 @@
             font-size: 0.85rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .slider-card { flex: 0 0 calc(50% - 10px); } /* Na tabletech 2 karty */
+        }
+
+        @media (max-width: 600px) {
             .header-container { flex-direction: column; gap: 15px; }
             .social-display-card { flex-direction: column; text-align: center; }
+            .slider-card { flex: 0 0 100%; } /* Na mobilu 1 karta */
+            .slide-in-popup { width: calc(100% - 40px); right: -100%; }
+            .slide-in-popup.show { right: 20px; }
         }
     </style>
 </head>
@@ -402,7 +506,9 @@
         </div>
     </header>
 
-    <section class="hero"></section>
+    <section class="hero">
+        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Iconic Logo Banner" class="hero-logo">
+    </section>
 
     <main>
         <section>
@@ -433,33 +539,42 @@
 
         <section class="slider-section">
             <h2 class="section-title">Ukázky z naší tvorby</h2>
-            <div class="slider-container" id="movieSlider">
-                <div class="slider-card">
-                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 1">
-                    <div class="slider-card-body">
-                        <h4>Mini Film 1</h4>
-                        <p>Popis nebo název vydaného projektu.</p>
+            <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slider-card">
+                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 1">
+                        <div class="slider-card-body">
+                            <h4>Mini Film 1</h4>
+                            <p>Krátký popis nebo název projektu 1.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slider-card">
-                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 2">
-                    <div class="slider-card-body">
-                        <h4>Mini Film 2</h4>
-                        <p>Popis nebo název vydaného projektu.</p>
+                    <div class="slider-card">
+                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 2">
+                        <div class="slider-card-body">
+                            <h4>Mini Film 2</h4>
+                            <p>Krátký popis nebo název projektu 2.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slider-card">
-                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 3">
-                    <div class="slider-card-body">
-                        <h4>Mini Film 3</h4>
-                        <p>Popis nebo název vydaného projektu.</p>
+                    <div class="slider-card">
+                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 3">
+                        <div class="slider-card-body">
+                            <h4>Mini Film 3</h4>
+                            <p>Krátký popis nebo název projektu 3.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slider-card">
-                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 4">
-                    <div class="slider-card-body">
-                        <h4>Mini Film 4</h4>
-                        <p>Popis nebo název vydaného projektu.</p>
+                    <div class="slider-card">
+                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 4">
+                        <div class="slider-card-body">
+                            <h4>Mini Film 4</h4>
+                            <p>Krátký popis nebo název projektu 4.</p>
+                        </div>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 5">
+                        <div class="slider-card-body">
+                            <h4>Mini Film 5</h4>
+                            <p>Krátký popis nebo název projektu 5.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -498,6 +613,16 @@
         </section>
     </main>
 
+    <div class="slide-in-popup" id="joinPopup">
+        <button class="close-popup" onclick="closePopup()">&times;</button>
+        <div class="popup-content">
+            <h3>Neváhej a přidej se k nám!</h3>
+            <p>Chceš se podílet na tvorbě filmů v Minecraftu?</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4WXYLKWQs838g1OyKlvislzrbewNgEm4DaRtRlMHCcvXQdg/viewform?usp=sharing&ouid=113638833002740759943" target="_blank" class="popup-btn">CHCI SE PRIDAŤ</a>
+        </div>
+        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Minecraft postavicka" class="popup-avatar" id="popupAvatar">
+    </div>
+
     <footer>
         <p>~ Iconic Studio 2022 ~</p>
     </footer>
@@ -508,15 +633,42 @@
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
+
+            // Vysunutí popup okna po 3 sekundách od načtení
+            setTimeout(() => {
+                document.getElementById('joinPopup').classList.add('show');
+            }, 3000);
         });
 
-        // DATA PRO SOCIÁLNÍ SÍTĚ
+        function closePopup() {
+            document.getElementById('joinPopup').classList.remove('show');
+        }
+
+        // AUTOMATICKÝ POSUN UKÁZEK PROJEKTŮ
+        const track = document.getElementById('sliderTrack');
+        let slideIndex = 0;
+        const totalCards = track.children.length;
+
+        setInterval(() => {
+            slideIndex++;
+            // Výpočet kolik karet se vejde na obrazovku
+            let cardsVisible = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+            
+            if (slideIndex > totalCards - cardsVisible) {
+                slideIndex = 0; // Návrat na začátek
+            }
+
+            const cardWidth = track.children[0].getBoundingClientRect().width + 20; // Šířka karty + gap
+            track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
+        }, 4000); // Posune se každé 4 sekundy
+
+        // DATA A PREPÍNANIE PRE SOCIÁLNE SÍTĚ
         const socialData = [
             { name: "YouTube", desc: "Sledujte naše filmy, seriály a tvorbu na oficiálním YouTube kanále.", link: "https://www.youtube.com/@IconicStudio2022/featured", badge: "YT" },
             { name: "Instagram", desc: "Podívejte se na fotky z natáčení, novinky a střípky ze zákulisí.", link: "https://www.instagram.com/iconic_studio_2022/", badge: "IG" },
             { name: "Discord", desc: "Připojte se k naší komunitě, povídejte si s námi a buďte u všeho jako první!", link: "https://discord.gg/JnmBDtmBUv", badge: "DC" },
             { name: "TikTok", desc: "Krátká videa, momentky a vtipné scénky z našich projektů.", link: "https://www.tiktok.com/@iconic.studio", badge: "TT" },
-            { name: "Facebook", desc: "Sledujte oficiální oznámení a události týkající se našeho studia.", link: "https://www.facebook.com/people/Iconic-Studio/100085663435953/", badge: "FB" }
+            { name: "Facebook", desc: "Sledujte oficiální oznámení a události týkající se našeho studio.", link: "https://www.facebook.com/people/Iconic-Studio/100085663435953/", badge: "FB" }
         ];
 
         let currentSocialIndex = 0;
@@ -536,7 +688,6 @@
             document.getElementById('socialBadge').innerText = data.badge;
         }
 
-        // AUTOMATICKÉ POSOUVÁNÍ SOCIÁLNÍCH SÍTÍ
         setInterval(() => {
             currentSocialIndex = (currentSocialIndex + 1) % socialData.length;
             showSocial(currentSocialIndex);
