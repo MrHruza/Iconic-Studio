@@ -139,12 +139,11 @@
             color: #fff;
         }
 
-        /* --- HERO BANNER (OBŘÍ LOGO & STMÍVÁNÍ DOLE) --- */
+        /* --- HERO BANNER --- */
         .hero {
             width: 100%;
             min-height: 600px;
             padding: 80px 20px;
-            /* Zadaný obrázek v pozadí + ztmavování směrem dolů */
             background: linear-gradient(to bottom, rgba(11, 12, 16, 0.2) 0%, rgba(11, 12, 16, 1) 100%), 
                         url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhNCPMbtH7tDVv2LW0nRLPakHt8p6_cdtkEMKF-H2E-GS7J5LtTmfXHo&s=10') center/cover no-repeat;
             display: flex;
@@ -155,7 +154,7 @@
 
         .hero-logo {
             width: 100%;
-            max-width: 1200px; /* 2x větší velikost */
+            max-width: 1200px;
             height: auto;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.95));
         }
@@ -215,11 +214,16 @@
             margin-bottom: 15px;
         }
 
-        /* --- PLYNULÝ NEKONEČNÝ SLIDER (JEDE FURT DOPRAVA) --- */
+        /* --- PLYNULÝ SLIDER OD STRANY K STRANĚ (POUZE OBRÁZKY) --- */
         .slider-section {
             margin: 60px 0;
             overflow: hidden;
-            width: 100%;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
         }
 
         .slider-wrapper {
@@ -236,47 +240,32 @@
 
         @keyframes scrollRight {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-300px * 4 - 80px)); } /* Posun o celou první sadu obrázků */
+            100% { transform: translateX(calc(-320px * 4 - 80px)); }
         }
 
         .slider-wrapper:hover .slider-track {
-            animation-play-state: paused; /* Zastaví se při najetí myší */
+            animation-play-state: paused;
         }
 
         .slider-card {
-            width: 300px;
+            width: 320px;
+            height: 200px;
             flex-shrink: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
             border-radius: 12px;
             overflow: hidden;
+            border: 1px solid var(--card-border);
             transition: 0.3s;
         }
 
         .slider-card:hover {
             border-color: var(--primary-color);
+            transform: scale(1.02);
         }
 
         .slider-card img {
             width: 100%;
-            height: 180px;
+            height: 100%;
             object-fit: cover;
-        }
-
-        .slider-card-body {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .slider-card-body h4 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .slider-card-body p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
         }
 
         /* --- SPONZOR --- */
@@ -300,7 +289,7 @@
             text-decoration: none;
         }
 
-        /* --- INTERAKTIVNÍ SOCIÁLNÍ SÍTĚ (BEZ RÁMEČKU A S LOGEM) --- */
+        /* --- SOCIÁLNÍ SÍTĚ --- */
         .socials-section {
             margin: 60px 0;
         }
@@ -369,7 +358,6 @@
             background: var(--primary-hover);
         }
 
-        /* ČISTÉ LOGO BEZ RÁMEČKU */
         .social-media-preview-clean {
             width: 140px;
             height: 140px;
@@ -441,10 +429,11 @@
         }
 
         .popup-avatar {
-            width: 90px;
+            width: 100px;
             height: auto;
             margin-left: 10px;
             object-fit: contain;
+            border-radius: 8px;
         }
 
         .close-popup {
@@ -543,63 +532,15 @@
             <h2 class="section-title">Ukázky z naší tvorby</h2>
             <div class="slider-wrapper">
                 <div class="slider-track">
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1">
-                        <div class="slider-card-body">
-                            <h4>Projekt 1</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2">
-                        <div class="slider-card-body">
-                            <h4>Projekt 2</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3">
-                        <div class="slider-card-body">
-                            <h4>Projekt 3</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4">
-                        <div class="slider-card-body">
-                            <h4>Projekt 4</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4"></div>
 
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1">
-                        <div class="slider-card-body">
-                            <h4>Projekt 1</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2">
-                        <div class="slider-card-body">
-                            <h4>Projekt 2</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3">
-                        <div class="slider-card-body">
-                            <h4>Projekt 3</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
-                    <div class="slider-card">
-                        <img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4">
-                        <div class="slider-card-body">
-                            <h4>Projekt 4</h4>
-                            <p>Ukázka z naší tvorby.</p>
-                        </div>
-                    </div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3"></div>
+                    <div class="slider-card"><img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4"></div>
                 </div>
             </div>
         </section>
@@ -644,7 +585,7 @@
             <p>Chceš se podílet na tvorbě filmů v Minecraftu?</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4WXYLKWQs838g1OyKlvislzrbewNgEm4DaRtRlMHCcvXQdg/viewform?usp=sharing&ouid=113638833002740759943" target="_blank" class="popup-btn">CHCI SE PRIDAŤ</a>
         </div>
-        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Minecraft postavicka" class="popup-avatar" id="popupAvatar">
+        <img src="https://github.com/user-attachments/assets/31b529ef-6d0e-4572-b775-18cac382455c" alt="Náborový obrázek" class="popup-avatar" id="popupAvatar">
     </div>
 
     <footer>
@@ -668,7 +609,7 @@
             document.getElementById('joinPopup').classList.remove('show');
         }
 
-        // DATA PRO SOCIÁLNÍ SÍTĚ A JEJICH LOGA
+        // DATA PRO SOCIÁLNÍ SÍTĚ
         const socialData = [
             { 
                 name: "YouTube", 
