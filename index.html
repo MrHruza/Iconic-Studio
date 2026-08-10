@@ -81,7 +81,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* --- HLAVIČKA --- */
+        /* --- HLAVIČKA (HOREJŠEK) --- */
         header {
             background: rgba(11, 12, 16, 0.95);
             backdrop-filter: blur(10px);
@@ -218,7 +218,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- BEZPEČNÝ OPAKOVANÝ SLIDER BEZ OTOČENÍ STRÁNKY --- */
+        /* --- BEZPEČNÝ OPAKOVANÝ SLIDER --- */
         .slider-section {
             margin: 60px 0;
             width: 100%;
@@ -453,7 +453,7 @@
             color: #fff;
         }
 
-        /* PATIČKA S NOVÝM TEXTEM */
+        /* PATIČKA */
         footer {
             background: #07080a;
             border-top: 1px solid var(--card-border);
@@ -496,10 +496,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/" class="active">ÚVOD</a></li>
-                    <li><a href="/projekty/">PROJEKTY</a></li>
-                    <li><a href="/historie/">HISTORIE</a></li>
-                    <li><a href="/clenove/">ČLENOVÉ</a></li>
+                    <li><a href="index.html" class="active">ÚVOD</a></li>
+                    <li><a href="projekty.html">PROJEKTY</a></li>
+                    <li><a href="historie.html">HISTORIE</a></li>
+                    <li><a href="clenove.html">ČLENOVÉ</a></li>
                 </ul>
             </nav>
         </div>
@@ -544,7 +544,6 @@
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2"></div>
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3"></div>
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4"></div>
-
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1"></div>
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2"></div>
                     <div class="slider-card"><img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3"></div>
@@ -602,13 +601,11 @@
     </footer>
 
     <script>
-        // NAČÍTAČKA
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
 
-            // Vysunutí popup okna po 3 sekundách
             setTimeout(() => {
                 document.getElementById('joinPopup').classList.add('show');
             }, 3000);
@@ -618,7 +615,6 @@
             document.getElementById('joinPopup').classList.remove('show');
         }
 
-        // DATA PRO SOCIÁLNÍ SÍTĚ
         const socialData = [
             { 
                 name: "YouTube", 
