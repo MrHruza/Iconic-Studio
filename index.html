@@ -139,14 +139,14 @@
             color: #fff;
         }
 
-        /* --- HERO BANNER (OPRAVDU VELKÉ LOGO) --- */
+        /* --- HERO BANNER (OBŘÍ LOGO & STMÍVÁNÍ DOLE) --- */
         .hero {
             width: 100%;
-            min-height: 500px;
-            padding: 60px 20px;
-            /* Zde si můžeš upravit obrázek na pozadí */
-            background: linear-gradient(rgba(11,12,16,0.4), rgba(11,12,16,0.8)), url('TVUJ_OBRAZEK_POZADI.jpg') center/cover no-repeat;
-            background-color: #000;
+            min-height: 600px;
+            padding: 80px 20px;
+            /* Zadaný obrázek v pozadí + ztmavování směrem dolů */
+            background: linear-gradient(to bottom, rgba(11, 12, 16, 0.2) 0%, rgba(11, 12, 16, 1) 100%), 
+                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhNCPMbtH7tDVv2LW0nRLPakHt8p6_cdtkEMKF-H2E-GS7J5LtTmfXHo&s=10') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -154,10 +154,10 @@
         }
 
         .hero-logo {
-            width: 90%;
-            max-width: 850px;
+            width: 100%;
+            max-width: 1200px; /* 2x větší velikost */
             height: auto;
-            filter: drop-shadow(0px 10px 25px rgba(0,0,0,0.9));
+            filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.95));
         }
 
         /* --- MAIN CONTENT --- */
@@ -215,27 +215,37 @@
             margin-bottom: 15px;
         }
 
-        /* --- AUTOMATICKÝ SLIDER PRO MINI FILMY --- */
+        /* --- PLYNULÝ NEKONEČNÝ SLIDER (JEDE FURT DOPRAVA) --- */
         .slider-section {
             margin: 60px 0;
             overflow: hidden;
-            position: relative;
+            width: 100%;
         }
 
         .slider-wrapper {
             width: 100%;
             overflow: hidden;
+            display: flex;
         }
 
         .slider-track {
             display: flex;
             gap: 20px;
-            transition: transform 0.5s ease-in-out;
+            animation: scrollRight 16s linear infinite;
+        }
+
+        @keyframes scrollRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-300px * 4 - 80px)); } /* Posun o celou první sadu obrázků */
+        }
+
+        .slider-wrapper:hover .slider-track {
+            animation-play-state: paused; /* Zastaví se při najetí myší */
         }
 
         .slider-card {
-            flex: 0 0 calc(33.333% - 14px);
-            min-width: 280px;
+            width: 300px;
+            flex-shrink: 0;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -290,7 +300,7 @@
             text-decoration: none;
         }
 
-        /* --- INTERAKTIVNÍ SOCIÁLNÍ SÍTĚ S LOGY --- */
+        /* --- INTERAKTIVNÍ SOCIÁLNÍ SÍTĚ (BEZ RÁMEČKU A S LOGEM) --- */
         .socials-section {
             margin: 60px 0;
         }
@@ -359,22 +369,20 @@
             background: var(--primary-hover);
         }
 
-        .social-media-preview {
-            width: 160px;
-            height: 160px;
+        /* ČISTÉ LOGO BEZ RÁMEČKU */
+        .social-media-preview-clean {
+            width: 140px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
         }
 
-        .social-media-preview img {
+        .social-media-preview-clean img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.5));
         }
 
         /* --- VYSOUVACÍ POPUP PANEL ZPRAVA --- */
@@ -465,17 +473,11 @@
             font-size: 0.85rem;
         }
 
-        @media (max-width: 900px) {
-            .slider-card { flex: 0 0 calc(50% - 10px); }
-        }
-
         @media (max-width: 600px) {
             .header-container { flex-direction: column; gap: 15px; }
             .social-display-card { flex-direction: column; text-align: center; }
-            .slider-card { flex: 0 0 100%; }
             .slide-in-popup { width: calc(100% - 40px); right: -100%; }
             .slide-in-popup.show { right: 20px; }
-            .hero-logo { width: 100%; }
         }
     </style>
 </head>
@@ -540,40 +542,62 @@
         <section class="slider-section">
             <h2 class="section-title">Ukázky z naší tvorby</h2>
             <div class="slider-wrapper">
-                <div class="slider-track" id="sliderTrack">
+                <div class="slider-track">
                     <div class="slider-card">
-                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 1">
+                        <img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1">
                         <div class="slider-card-body">
-                            <h4>Mini Film 1</h4>
-                            <p>Krátký popis nebo název projektu 1.</p>
+                            <h4>Projekt 1</h4>
+                            <p>Ukázka z naší tvorby.</p>
                         </div>
                     </div>
                     <div class="slider-card">
-                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 2">
+                        <img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2">
                         <div class="slider-card-body">
-                            <h4>Mini Film 2</h4>
-                            <p>Krátký popis nebo název projektu 2.</p>
+                            <h4>Projekt 2</h4>
+                            <p>Ukázka z naší tvorby.</p>
                         </div>
                     </div>
                     <div class="slider-card">
-                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 3">
+                        <img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3">
                         <div class="slider-card-body">
-                            <h4>Mini Film 3</h4>
-                            <p>Krátký popis nebo název projektu 3.</p>
+                            <h4>Projekt 3</h4>
+                            <p>Ukázka z naší tvorby.</p>
                         </div>
                     </div>
                     <div class="slider-card">
-                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 4">
+                        <img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4">
                         <div class="slider-card-body">
-                            <h4>Mini Film 4</h4>
-                            <p>Krátký popis nebo název projektu 4.</p>
+                            <h4>Projekt 4</h4>
+                            <p>Ukázka z naší tvorby.</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-card">
+                        <img src="https://i.ytimg.com/vi/cGaa_81GZSc/maxresdefault.jpg" alt="Ukázka 1">
+                        <div class="slider-card-body">
+                            <h4>Projekt 1</h4>
+                            <p>Ukázka z naší tvorby.</p>
                         </div>
                     </div>
                     <div class="slider-card">
-                        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 5">
+                        <img src="https://i.ytimg.com/vi/ypwDTxrqEmM/hqdefault.jpg" alt="Ukázka 2">
                         <div class="slider-card-body">
-                            <h4>Mini Film 5</h4>
-                            <p>Krátký popis nebo název projektu 5.</p>
+                            <h4>Projekt 2</h4>
+                            <p>Ukázka z naší tvorby.</p>
+                        </div>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://i.ytimg.com/vi/A-tyXSJxS9Y/hqdefault.jpg" alt="Ukázka 3">
+                        <div class="slider-card-body">
+                            <h4>Projekt 3</h4>
+                            <p>Ukázka z naší tvorby.</p>
+                        </div>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://i.ytimg.com/vi/SKXoM5iUKcg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3qb1s6AuQuVHM0wE2g-_kh5jIXA" alt="Ukázka 4">
+                        <div class="slider-card-body">
+                            <h4>Projekt 4</h4>
+                            <p>Ukázka z naší tvorby.</p>
                         </div>
                     </div>
                 </div>
@@ -606,7 +630,7 @@
                     <p id="socialDesc">Sledujte naše filmy, seriály a tvorbu na oficiálním YouTube kanále.</p>
                     <a href="https://www.youtube.com/@IconicStudio2022/featured" id="socialLink" target="_blank" class="btn-social">NAVŠTÍVIT YOUTUBE</a>
                 </div>
-                <div class="social-media-preview">
+                <div class="social-media-preview-clean">
                     <img id="socialImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" alt="Social Logo">
                 </div>
             </div>
@@ -643,23 +667,6 @@
         function closePopup() {
             document.getElementById('joinPopup').classList.remove('show');
         }
-
-        // AUTOMATICKÝ POSUN UKÁZEK PROJEKTŮ
-        const track = document.getElementById('sliderTrack');
-        let slideIndex = 0;
-        const totalCards = track.children.length;
-
-        setInterval(() => {
-            slideIndex++;
-            let cardsVisible = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
-            
-            if (slideIndex > totalCards - cardsVisible) {
-                slideIndex = 0;
-            }
-
-            const cardWidth = track.children[0].getBoundingClientRect().width + 20;
-            track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
-        }, 4000);
 
         // DATA PRO SOCIÁLNÍ SÍTĚ A JEJICH LOGA
         const socialData = [
