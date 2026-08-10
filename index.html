@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iconic Studio</title>
+    <title>Iconic Studio :: Úvod</title>
     <meta name="description" content="To na čem si opravdu hodně zakládáme je originalita. Snažíme se ukázat projekty, které jsou jedinečné a originální.">
     
     <link rel="icon" href="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" type="image/png">
@@ -103,6 +103,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-decoration: none;
         }
 
         .logo-area img {
@@ -218,7 +219,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- BEZPEČNÝ OPAKOVANÝ SLIDER --- */
+        /* --- SLIDER --- */
         .slider-section {
             margin: 60px 0;
             width: 100%;
@@ -375,7 +376,7 @@
             filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.5));
         }
 
-        /* --- VYSOUVACÍ POPUP PANEL ZPRAVA --- */
+        /* --- POPUP PANEL --- */
         .slide-in-popup {
             position: fixed;
             bottom: 30px;
@@ -397,22 +398,9 @@
             right: 30px;
         }
 
-        .popup-content {
-            flex: 1;
-        }
-
-        .popup-content h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .popup-content p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
+        .popup-content { flex: 1; }
+        .popup-content h3 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 8px; }
+        .popup-content p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
 
         .popup-btn {
             display: inline-block;
@@ -426,9 +414,7 @@
             transition: 0.3s;
         }
 
-        .popup-btn:hover {
-            background: var(--primary-hover);
-        }
+        .popup-btn:hover { background: var(--primary-hover); }
 
         .popup-avatar {
             width: 100px;
@@ -449,9 +435,7 @@
             cursor: pointer;
         }
 
-        .close-popup:hover {
-            color: #fff;
-        }
+        .close-popup:hover { color: #fff; }
 
         /* PATIČKA */
         footer {
@@ -487,13 +471,13 @@
 
     <header>
         <div class="header-container">
-            <div class="logo-area">
+            <a href="index.html" class="logo-area">
                 <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Iconic Studio Logo">
                 <div class="logo-text">
                     <h1>Iconic Studio</h1>
                     <div class="slogan">„Vraťme Československou Minecraft Kinematografii“</div>
                 </div>
-            </div>
+            </a>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">ÚVOD</a></li>
@@ -616,36 +600,11 @@
         }
 
         const socialData = [
-            { 
-                name: "YouTube", 
-                desc: "Sledujte naše filmy, seriály a tvorbu na oficiálním YouTube kanále.", 
-                link: "https://www.youtube.com/@IconicStudio2022/featured", 
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" 
-            },
-            { 
-                name: "TikTok", 
-                desc: "Krátká videa, momentky a vtipné scénky z našich projektů.", 
-                link: "https://www.tiktok.com/@iconic.studio", 
-                img: "https://store-images.s-microsoft.com/image/apps.47495.13634052595610511.c45457c9-b4af-46b0-8e61-8d7c0aec3f56.a8b71481-8a43-465d-88d6-e63add92c112" 
-            },
-            { 
-                name: "Instagram", 
-                desc: "Podívejte se na fotky z natáčení, novinky a střípky ze zákulisí.", 
-                link: "https://www.instagram.com/iconic_studio_2022/", 
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1280px-Instagram_logo_2022.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" 
-            },
-            { 
-                name: "Facebook", 
-                desc: "Sledujte oficiální oznámení a události týkající se našeho studia.", 
-                link: "https://www.facebook.com/people/Iconic-Studio/100085663435953/", 
-                img: "https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg?utm_source=cs.wikipedia.org&utm_campaign=index&utm_content=original" 
-            },
-            { 
-                name: "Discord", 
-                desc: "Připojte se k naší komunitě, povídejte si s námi a buďte u všeho jako první!", 
-                link: "https://discord.gg/JnmBDtmBUv", 
-                img: "https://en.wikifur.com/w/images/d/d0/Discord_logo.png" 
-            }
+            { name: "YouTube", desc: "Sledujte naše filmy, seriály a tvorbu na oficiálním YouTube kanále.", link: "https://www.youtube.com/@IconicStudio2022/featured", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" },
+            { name: "TikTok", desc: "Krátká videa, momentky a vtipné scénky z našich projektů.", link: "https://www.tiktok.com/@iconic.studio", img: "https://store-images.s-microsoft.com/image/apps.47495.13634052595610511.c45457c9-b4af-46b0-8e61-8d7c0aec3f56.a8b71481-8a43-465d-88d6-e63add92c112" },
+            { name: "Instagram", desc: "Podívejte se na fotky z natáčení, novinky a střípky ze zákulisí.", link: "https://www.instagram.com/iconic_studio_2022/", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1280px-Instagram_logo_2022.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" },
+            { name: "Facebook", desc: "Sledujte oficiální oznámení a události týkající se našeho studia.", link: "https://www.facebook.com/people/Iconic-Studio/100085663435953/", img: "https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg?utm_source=cs.wikipedia.org&utm_campaign=index&utm_content=original" },
+            { name: "Discord", desc: "Připojte se k naší komunitě, povídejte si s námi a buďte u všeho jako první!", link: "https://discord.gg/JnmBDtmBUv", img: "https://en.wikifur.com/w/images/d/d0/Discord_logo.png" }
         ];
 
         let currentSocialIndex = 0;
@@ -653,9 +612,7 @@
         function showSocial(index) {
             currentSocialIndex = index;
             const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === index);
-            });
+            dots.forEach((dot, idx) => { dot.classList.toggle('active', idx === index); });
 
             const data = socialData[index];
             document.getElementById('socialName').innerText = data.name;
