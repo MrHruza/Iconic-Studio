@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJEKTY :: Iconic Studio</title>
+    <meta name="description" content="Seznam projektů Iconic Studio - filmy a seriály v Minecraftu.">
+    
+    <link rel="icon" href="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary-color: #f57f17;
+            --primary-hover: #ff9800;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- PRELOADER --- */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader-logo {
+            width: 120px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loader-spinner {
+            margin-top: 20px;
+            width: 40px; height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- HLAVIČKA --- */
+        header {
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-area img {
+            height: 45px;
+            border-radius: 6px;
+        }
+
+        .logo-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .slogan {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle-divider {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+        }
+
+        /* --- PROJEKTY KARTY --- */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-banner {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .project-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .project-status {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .project-year {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* PATIČKA */
+        footer {
+            background: #07080a;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            padding: 25px;
+            margin-top: auto;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p.sub-text {
+            margin-top: 5px;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            .project-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Iconic Studio Logo" class="loader-logo">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-area">
+                <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" alt="Iconic Studio Logo">
+                <div class="logo-text">
+                    <h1>Iconic Studio</h1>
+                    <div class="slogan">„Vraťme Československou Minecraft Kinematografii“</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ÚVOD</a></li>
+                    <li><a href="projekty.html" class="active">PROJEKTY</a></li>
+                    <li><a href="historie.html">HISTORIE</a></li>
+                    <li><a href="clenove.html">ČLENOVÉ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">PROJEKTY</h1>
+        <div class="page-subtitle-divider">________</div>
+
+        <div class="project-card">
+            <div class="project-banner">
+                <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000010-4228c4228e/ep1.png?ph=a121710cf8" alt="Trosečníci Banner">
+            </div>
+            <div style="text-align: center;"><span class="project-status">COMING SOON!</span></div>
+            <h2 class="project-title">Trosečníci EP. I - Ztroskotání</h2>
+            <div class="project-year">~ Seriál 2025 ~</div>
+            <p class="project-desc">
+                Pokud očekáváte obyčejné sci-fi, kde hlavní postavy jen tak přežijí pád letadla, jste vedle. Tohle je příběh muže jménem Ethan a jeho přítele Lucase, kteří letí na konferenci. Bohužel neúspěšně. Nebo? Potýkají se na své cestě s různými překážkami, musí najít zdroj pitné vody a celkově adaptovat se na "Nový svět" a jeho funkce. Potkávají se s příšerami, kouzelníky a nápomocnými lidmi. Příběh skrývá ale mnohem více.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/A-tyXSJxS9Y" allowfullscreen></iframe>
+            </div>
+            <h2 class="project-title">Trůn Smrti: Smlouva Krve</h2>
+            <div class="project-year">~ Film 2023 ~</div>
+            <p class="project-desc">
+                Vítězí vždy dobro? Je opravdu lepší přísný a striktní řád? Král Caladon po smrti svého otce přebírá korunu. Na druhé červené straně stojí král Arin, který preferuje krutější svět a přísný řád. Kam až se dostane rivalita těchto dvou králů? Zkušenost či ekonomika? Krutý či dobrosrdečný?
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/ypwDTxrqEmM" allowfullscreen></iframe>
+            </div>
+            <h2 class="project-title">Špióni</h2>
+            <div class="project-year">~ Film 2023 ~</div>
+            <p class="project-desc">
+                Jeff a Brain... Dva špioni, kteří sedí každý den od rána do večera ve své společné kanceláři. Šéf nemá nikoho v záloze, koho by poslal do akce. Proto mu nic jiného nezbývá a posilá Jeffa a Braina. Jak to dopadne?
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/AASMy1pwCFA" allowfullscreen></iframe>
+            </div>
+            <h2 class="project-title">Na Útěku</h2>
+            <div class="project-year">~ Film 2023 ~</div>
+            <p class="project-desc">
+                Darwin je zatčen za obvinění z vraždy. Bude přiřazen do cely k Richiemu. První vteřiny se nenáviděli a o chvíli později z nich byli přátelé na dlouhé roky. Po letech dojdou k finálnímu plánu na útěk a zkusí ho zrealizovat. Povede se jim to?
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/-bw9HQ575WI" allowfullscreen></iframe>
+            </div>
+            <h2 class="project-title">Dlouhá Cesta - Starý Egypt</h2>
+            <div class="project-year">~ Série 2022 ~</div>
+            <p class="project-desc">
+                Dva kluci Paulie a Jacob postupem času poznávají krásu každého biomu a zažívají tam nezapomenutelný příběh. Tentokrát je to v Egyptě.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/j-sSPZxtQok" allowfullscreen></iframe>
+            </div>
+            <h2 class="project-title">Dlouhá Cesta - Prokletá Džungle</h2>
+            <div class="project-year">~ Série 2022 ~</div>
+            <p class="project-desc">
+                Dva kluci Paulie a Jacob postupem času poznávají krásu každého biomu a zažívají tam nezapomenutelný příběh. Tentokrát je to džungle.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>~ Iconic Studio 2022 ~</p>
+        <p class="sub-text">Všechno najdeš v Minecraftu</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+        });
+    </script>
+</body>
+</html>
