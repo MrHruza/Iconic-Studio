@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iconic Studio</title>
     <meta name="description" content="To na čem si opravdu hodně zakládáme je originalita. Snažíme se ukázat projekty, které jsou jedinečné a originální.">
-    <link rel="icon" href="https://duyn491kcolsw.cloudfront.net/files/2s/2sd/2sd9d9.ico">
+    
+    <link rel="icon" href="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000016-a6cfca6cfe/Iconic%20Logo.png" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,13 +40,10 @@
             overflow-x: hidden;
         }
 
-        /* --- NAČÍTACÍ OBRAZOVKA (PRELOADER) --- */
+        /* --- PRELOADER --- */
         #loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
@@ -57,14 +55,12 @@
 
         .loader-logo {
             width: 120px;
-            height: auto;
             animation: pulse 1.5s infinite ease-in-out;
         }
 
         .loader-spinner {
             margin-top: 20px;
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             border: 4px solid rgba(255, 255, 255, 0.1);
             border-top: 4px solid var(--primary-color);
             border-radius: 50%;
@@ -72,9 +68,8 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
+            0%, 100% { transform: scale(0.95); opacity: 0.8; }
             50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
         }
 
         @keyframes spin {
@@ -82,12 +77,11 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* --- HLAVIČKA A NAVIGACE --- */
+        /* --- HLAVIČKA --- */
         header {
             background: rgba(11, 12, 16, 0.95);
             backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
+            position: sticky; top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--card-border);
         }
@@ -109,17 +103,13 @@
 
         .logo-area img {
             height: 45px;
-            width: auto;
             border-radius: 6px;
         }
 
         .logo-text h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.3rem;
-            font-weight: 800;
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .slogan {
@@ -141,7 +131,7 @@
             border-radius: 6px;
             color: var(--text-main);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         nav a:hover, nav a.active {
@@ -149,41 +139,21 @@
             color: #fff;
         }
 
-        /* --- HERO BANNER (BEZ DUPLICITNÍHO LOGA) --- */
+        /* --- CLEAN HERO BANNER (BEZ TEXTU PŘES OBRÁZEK) --- */
         .hero {
-            background: linear-gradient(rgba(11,12,16,0.7), rgba(11,12,16,1)), url('https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png') center/cover no-repeat;
-            padding: 100px 20px 80px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 50vh;
+            min-height: 350px;
+            background: url('https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png') center/contain no-repeat;
+            background-color: #000;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        .hero h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #fff, #a0a0a0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            max-width: 600px;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        /* --- HLAVNÍ OBSAH --- */
+        /* --- MAIN CONTENT --- */
         main {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
             width: 100%;
         }
 
@@ -192,8 +162,6 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
             margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             position: relative;
         }
 
@@ -207,7 +175,7 @@
             border-radius: 2px;
         }
 
-        /* Grid pro vlastnosti */
+        /* --- VLASTNOSTI GRID --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -221,7 +189,7 @@
             padding: 30px 25px;
             border-radius: 12px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .feature-card:hover {
@@ -233,44 +201,61 @@
         .feature-card h3 {
             font-family: 'Montserrat', sans-serif;
             color: var(--primary-color);
-            font-size: 1.3rem;
             margin-bottom: 15px;
-            text-transform: uppercase;
         }
 
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        /* --- SLIDER PRO MINI FILMY --- */
+        .slider-section {
+            margin: 60px 0;
         }
 
-        /* Tlačítko */
-        .cta-container {
+        .slider-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--bg-color);
+        }
+
+        .slider-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .slider-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .slider-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .slider-card-body {
+            padding: 15px;
             text-align: center;
-            margin: 40px 0;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 16px 36px;
+        .slider-card-body h4 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(245, 127, 23, 0.3);
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            margin-bottom: 5px;
+            color: #fff;
         }
 
-        .btn:hover {
-            background: var(--primary-hover);
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(245, 127, 23, 0.5);
+        .slider-card-body p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        /* Sponzor sekce */
+        /* --- SPONZOR --- */
         .sponsor-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -282,14 +267,7 @@
 
         .sponsor-box img {
             max-width: 260px;
-            width: 100%;
-            height: auto;
             margin: 20px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .sponsor-box img:hover {
-            transform: scale(1.03);
         }
 
         .sponsor-box a {
@@ -298,42 +276,89 @@
             text-decoration: none;
         }
 
-        .sponsor-box a:hover {
-            text-decoration: underline;
+        /* --- INTERAKTIVNÍ SOCIÁLNÍ SÍTĚ --- */
+        .socials-section {
+            margin: 60px 0;
         }
 
-        /* Sociální sítě */
-        .socials-grid {
+        .dots-navigation {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
-        .social-btn {
+        .dot {
+            width: 14px;
+            height: 14px;
+            background: var(--card-border);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .social-display-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--text-main);
-            text-decoration: none;
-            min-width: 150px;
-            text-align: center;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            min-height: 250px;
         }
 
-        .social-btn:hover {
+        .social-info {
+            flex: 1;
+        }
+
+        .social-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .social-info p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn-social {
+            display: inline-block;
             background: var(--primary-color);
             color: #fff;
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        /* --- PATIČKA --- */
+        .btn-social:hover {
+            background: var(--primary-hover);
+        }
+
+        .social-media-preview {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        /* PATIČKA */
         footer {
             background: #07080a;
             border-top: 1px solid var(--card-border);
@@ -344,21 +369,9 @@
             font-size: 0.85rem;
         }
 
-        /* RESPONSIVITA */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+            .header-container { flex-direction: column; gap: 15px; }
+            .social-display-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -389,16 +402,11 @@
         </div>
     </header>
 
-    <section class="hero">
-        <h2>Československá Minecraft Kinematografie</h2>
-        <p>Vytváříme originální filmy a seriály v prostředí Minecraftu přes roleplay.</p>
-        <a href="https://www.youtube.com/channel/UCKA6VtHivMNOcTlBPdP31YA" target="_blank" class="btn">NAŠE TVORBA ZDE!</a>
-    </section>
+    <section class="hero"></section>
 
     <main>
         <section>
             <h2 class="section-title">Co od nás můžete čekat!</h2>
-            
             <div class="features-grid">
                 <div class="feature-card">
                     <h3>Originalita</h3>
@@ -423,6 +431,40 @@
             </div>
         </section>
 
+        <section class="slider-section">
+            <h2 class="section-title">Ukázky z naší tvorby</h2>
+            <div class="slider-container" id="movieSlider">
+                <div class="slider-card">
+                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 1">
+                    <div class="slider-card-body">
+                        <h4>Mini Film 1</h4>
+                        <p>Popis nebo název vydaného projektu.</p>
+                    </div>
+                </div>
+                <div class="slider-card">
+                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 2">
+                    <div class="slider-card-body">
+                        <h4>Mini Film 2</h4>
+                        <p>Popis nebo název vydaného projektu.</p>
+                    </div>
+                </div>
+                <div class="slider-card">
+                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 3">
+                    <div class="slider-card-body">
+                        <h4>Mini Film 3</h4>
+                        <p>Popis nebo název vydaného projektu.</p>
+                    </div>
+                </div>
+                <div class="slider-card">
+                    <img src="https://a121710cf8.cbaul-cdnwnd.com/5e9251a770d8852217310363493a3056/200000002-b1295b1299/ICONIC%20pixel%20text%20png.png" alt="Ukázka 4">
+                    <div class="slider-card-body">
+                        <h4>Mini Film 4</h4>
+                        <p>Popis nebo název vydaného projektu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="sponsor-box">
             <p>Spolehlivé zázemí nám zajišťuje Atropol Hosting, kterému ze srdce děkujeme!</p>
             <a href="https://atropol.eu/" target="_blank">
@@ -432,14 +474,26 @@
             <p><a href="https://atropol.eu/" target="_blank">SERVERY ZDE!</a></p>
         </section>
 
-        <section>
+        <section class="socials-section">
             <h2 class="section-title">Kde nás všude najdete!</h2>
-            <div class="socials-grid">
-                <a href="https://www.youtube.com/@IconicStudio2022/featured" target="_blank" class="social-btn">YOUTUBE</a>
-                <a href="https://www.instagram.com/iconic_studio_2022/" target="_blank" class="social-btn">INSTAGRAM</a>
-                <a href="https://discord.gg/JnmBDtmBUv" target="_blank" class="social-btn">DISCORD</a>
-                <a href="https://www.tiktok.com/@iconic.studio" target="_blank" class="social-btn">TIK TOK</a>
-                <a href="https://www.facebook.com/people/Iconic-Studio/100085663435953/" target="_blank" class="social-btn">FACEBOOK</a>
+            
+            <div class="dots-navigation">
+                <div class="dot active" onclick="showSocial(0)"></div>
+                <div class="dot" onclick="showSocial(1)"></div>
+                <div class="dot" onclick="showSocial(2)"></div>
+                <div class="dot" onclick="showSocial(3)"></div>
+                <div class="dot" onclick="showSocial(4)"></div>
+            </div>
+
+            <div class="social-display-card">
+                <div class="social-info">
+                    <h3 id="socialName">YouTube</h3>
+                    <p id="socialDesc">Sledujte naše nejnovější videa, filtry a komunitní tvorbu přímo na našem kanále!</p>
+                    <a href="https://www.youtube.com/@IconicStudio2022/featured" id="socialLink" target="_blank" class="btn-social">NAVŠTÍVIT YOUTUBE</a>
+                </div>
+                <div class="social-media-preview" id="socialBadge">
+                    YT
+                </div>
             </div>
         </section>
     </main>
@@ -449,11 +503,44 @@
     </footer>
 
     <script>
+        // NAČÍTAČKA
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
         });
+
+        // DATA PRO SOCIÁLNÍ SÍTĚ
+        const socialData = [
+            { name: "YouTube", desc: "Sledujte naše filmy, seriály a tvorbu na oficiálním YouTube kanále.", link: "https://www.youtube.com/@IconicStudio2022/featured", badge: "YT" },
+            { name: "Instagram", desc: "Podívejte se na fotky z natáčení, novinky a střípky ze zákulisí.", link: "https://www.instagram.com/iconic_studio_2022/", badge: "IG" },
+            { name: "Discord", desc: "Připojte se k naší komunitě, povídejte si s námi a buďte u všeho jako první!", link: "https://discord.gg/JnmBDtmBUv", badge: "DC" },
+            { name: "TikTok", desc: "Krátká videa, momentky a vtipné scénky z našich projektů.", link: "https://www.tiktok.com/@iconic.studio", badge: "TT" },
+            { name: "Facebook", desc: "Sledujte oficiální oznámení a události týkající se našeho studia.", link: "https://www.facebook.com/people/Iconic-Studio/100085663435953/", badge: "FB" }
+        ];
+
+        let currentSocialIndex = 0;
+
+        function showSocial(index) {
+            currentSocialIndex = index;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+
+            const data = socialData[index];
+            document.getElementById('socialName').innerText = data.name;
+            document.getElementById('socialDesc').innerText = data.desc;
+            document.getElementById('socialLink').innerText = "NAVŠTÍVIT " + data.name.toUpperCase();
+            document.getElementById('socialLink').href = data.link;
+            document.getElementById('socialBadge').innerText = data.badge;
+        }
+
+        // AUTOMATICKÉ POSOUVÁNÍ SOCIÁLNÍCH SÍTÍ
+        setInterval(() => {
+            currentSocialIndex = (currentSocialIndex + 1) % socialData.length;
+            showSocial(currentSocialIndex);
+        }, 5000);
     </script>
 </body>
 </html>
